@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 2 — SnapOutfit | Nathaniel Widiyanto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo"><span class="dot"></span><span class="t">Nathaniel.dev</span></div>
+      <div class="nav-links"><a href="index.html">← Beranda</a></div>
+    </div>
+  </nav>
+
+  <header class="page-hero wrap">
+    <span class="eyebrow reveal">Project 02</span>
+    <h1 class="reveal slide-l d1">Snap<span class="grad">Outfit</span></h1>
+    <span class="proj-tagline reveal slide-r d2">Belanja Cepat, Tampil Hebat. 🛍️</span>
+  </header>
+
+  <main class="wrap">
+
+    <section class="proj-section reveal d1">
+      <h2><span class="ico">📝</span> Deskripsi Project</h2>
+      <p>
+        SnapOutfit adalah sebuah toko pakaian daring (e-commerce) yang dirancang untuk menjadi
+        platform penjualan digital yang mandiri. Tujuan utamanya adalah memperluas jangkauan pasar
+        melampaui batas toko fisik dengan menyediakan ruang belanja virtual yang dapat diakses
+        kapan saja. Pengunjung dapat menjelajahi katalog pakaian dan aksesori, menambahkannya ke
+        keranjang belanja, lalu melanjutkan ke proses pembayaran — semuanya dalam satu alur yang
+        ringkas. Dengan memotong jalur perantara penjualan, platform ini berpotensi menjangkau lebih
+        banyak pelanggan secara langsung sekaligus memaksimalkan kenyamanan berbelanja.
+      </p>
+    </section>
+
+    <section class="proj-section reveal d1">
+      <h2><span class="ico">⚙️</span> Teknologi yang Digunakan</h2>
+      <div class="tech-list">
+        <div class="tech-item reveal slide-l d1">
+          <div class="tname">React JS</div>
+          <div class="tdesc">Membangun antarmuka berbasis komponen modular seperti kartu produk, navbar, dan halaman checkout, dengan manajemen data global lewat React Context (AuthContext &amp; CartContext).</div>
+        </div>
+        <div class="tech-item reveal slide-l d2">
+          <div class="tname">Supabase</div>
+          <div class="tdesc">Layanan back end untuk basis data dan autentikasi. Keamanan privasi data ditanamkan langsung pada basis data menggunakan aturan Row Level Security.</div>
+        </div>
+        <div class="tech-item reveal slide-l d3">
+          <div class="tname">CSS3</div>
+          <div class="tdesc">Estetika modern minimalis dengan palet netral, sistem grid adaptif yang berubah dari 1 kolom di ponsel menjadi beberapa kolom di desktop.</div>
+        </div>
+        <div class="tech-item reveal slide-l d4">
+          <div class="tname">JavaScript</div>
+          <div class="tdesc">Logika keranjang belanja yang persisten, pengendali tampilan, serta sinkronisasi data antara peramban dan basis data.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-section reveal d1">
+      <h2><span class="ico">✨</span> Fitur Utama</h2>
+      <div class="feature-grid">
+        <div class="feature reveal zoom d1">
+          <div class="fico">🔍</div>
+          <h4>Pencarian Instan</h4>
+          <p>Cari dan saring produk dengan cepat sesuai kebutuhan pengunjung.</p>
+        </div>
+        <div class="feature reveal zoom d2">
+          <div class="fico">🛒</div>
+          <h4>Keranjang Persisten</h4>
+          <p>Isi keranjang tetap tersimpan meski halaman ditutup dan dibuka kembali.</p>
+        </div>
+        <div class="feature reveal zoom d3">
+          <div class="fico">🔐</div>
+          <h4>Autentikasi Aman</h4>
+          <p>Sistem masuk dengan privasi data yang ketat melalui Row Level Security.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-section reveal d1">
+      <h2><span class="ico">🛠️</span> Catatan Pengembangan</h2>
+      <p>
+        Bagian paling menantang sekaligus paling menarik dari SnapOutfit adalah menjembatani
+        antarmuka pengguna dengan infrastruktur back end Supabase. Alih-alih hanya mengandalkan kode
+        di sisi aplikasi, keamanan data benar-benar ditanamkan langsung pada basis data lewat aturan
+        Row Level Security. Merancang logika keranjang belanja agar tetap konsisten di berbagai
+        perangkat juga memberi pembelajaran berharga tentang pengelolaan state global menggunakan
+        React Context serta arsitektur data relasional yang kokoh.
+      </p>
+    </section>
+
+    <section class="proj-section reveal d1">
+      <div class="live-box reveal zoom d1">
+        <div>
+          <div class="lt">🌐 Lihat Website Aslinya</div>
+          <div class="ll">snapoutfit.vercel.app</div>
+        </div>
+        <a href="https://snapoutfit.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary">Buka Live Demo →</a>
+      </div>
+    </section>
+
+    <section class="proj-section reveal d1">
+      <h2><span class="ico">🗂️</span> Project Lainnya</h2>
+      <div class="other-grid">
+        <div class="other-card reveal slide-l d1">
+          <div class="on">PROJECT 01</div>
+          <h4>PERKASA</h4>
+          <p>Website komunitas pecinta alam Kolese Kanisius yang menampilkan kegiatan, dibangun dengan React JS.</p>
+          <a href="project1.html">Buka Project →</a>
+        </div>
+        <div class="other-card reveal slide-r d2">
+          <div class="on">PROJECT 03</div>
+          <h4>NEBULA Playground</h4>
+          <p>Playground partikel interaktif yang dibuat dengan Canvas API dan JavaScript murni.</p>
+          <a href="project3.html">Buka Project →</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="text-align:center;" class="reveal">
+      <a href="index.html" class="btn btn-ghost">← Kembali ke Halaman Utama</a>
+    </section>
+
+  </main>
+
+  <script>
+    const _revealEls = document.querySelectorAll(".reveal");
+    const _obsReveal = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); _obsReveal.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    _revealEls.forEach(function (el) { _obsReveal.observe(el); });
+    // Pengaman: pastikan semua elemen terlihat setelah beberapa detik
+    setTimeout(function () { _revealEls.forEach(function (el) { el.classList.add("in"); }); }, 3500);
+
+    console.log("📄 Project 2 — SnapOutfit (halaman deskripsi) dimuat.");
+  </script>
+
+</body>
+</html>

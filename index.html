@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Siswa — Nathaniel Widiyanto | TIK XIA3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="dot"></span>
+        <span class="t">Nathaniel.dev</span>
+      </div>
+      <div class="nav-links">
+        <a href="#biodata">Biodata</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#nilai">Nilai</a>
+        <a href="#project">Project</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero wrap">
+    <div class="badge reveal d1">Ulangan Praktik TIK · Semester Genap</div>
+    <h1 class="reveal slide-l d2">Website Report <span class="grad">Siswa</span></h1>
+    <p class="reveal slide-r d3">Teknologi Informasi dan Komunikasi — Project pembelajaran HTML, CSS, dan JavaScript.</p>
+    <div class="meta reveal d4">
+      <span>👤 Nathaniel Widiyanto</span>
+      <span>🏫 SMA Kanisius</span>
+      <span>📚 Kelas XIA3</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="biodata">
+      <h2 class="section-title reveal slide-l">Biodata Siswa</h2>
+      <div class="bio-grid">
+        <!-- Foto profil -->
+        <div class="bio-photo reveal slide-l d1">
+          <div class="avatar"><img src="foto-profil.jpeg" alt="Foto Nathaniel Widiyanto"></div>
+          <div class="name">Nathaniel Widiyanto</div>
+          <div class="role">Calon Engineer 🚀</div>
+        </div>
+        <!-- Detail biodata -->
+        <div class="card reveal slide-r d2">
+          <div class="bio-list">
+            <div class="bio-row">
+              <span class="label">Nama Lengkap</span>
+              <span class="value">Nathaniel Widiyanto</span>
+            </div>
+            <div class="bio-row">
+              <span class="label">Umur</span>
+              <span class="value">17 Tahun</span>
+            </div>
+            <div class="bio-row">
+              <span class="label">Sekolah</span>
+              <span class="value">SMA Kanisius</span>
+            </div>
+            <div class="bio-row">
+              <span class="label">Kelas</span>
+              <span class="value">XIA3</span>
+            </div>
+            <div class="bio-row">
+              <span class="label">No. Absen</span>
+              <span class="value">24</span>
+            </div>
+            <div class="bio-row">
+              <span class="label">Hobi</span>
+              <span class="value">
+                <span class="tags">
+                  <span class="tag">😴 Tidur</span>
+                  <span class="tag">🎮 Main Game</span>
+                  <span class="tag">📖 Baca Komik</span>
+                  <span class="tag">🎨 Gambar</span>
+                  <span class="tag">⚽ Olahraga</span>
+                </span>
+              </span>
+            </div>
+            <div class="bio-row">
+              <span class="label">Cita-cita</span>
+              <span class="value">Engineer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <h2 class="section-title reveal slide-l">Tentang Saya</h2>
+      <div class="about reveal slide-r d1">
+        <p>
+          Halo! Saya Nathaniel Widiyanto, siswa kelas XIA3 SMA Kanisius yang berusia 17 tahun.
+          Di waktu luang, saya senang main game, membaca komik, dan menggambar — hobi-hobi yang
+          membuat saya tertarik pada dunia kreatif sekaligus teknologi. Saya juga suka berolahraga
+          dan, tentu saja, tidur untuk mengisi ulang energi.
+        </p>
+        <p>
+          Selama mempelajari TIK semester ini, saya belajar membangun website dari nol menggunakan
+          HTML untuk struktur, CSS untuk tampilan, dan JavaScript untuk membuat halaman menjadi
+          interaktif. Pengalaman ini semakin menguatkan cita-cita saya untuk menjadi seorang
+          <strong>engineer</strong>, karena saya menyukai proses memecahkan masalah dan membuat
+          sesuatu yang nyata dari sebuah ide.
+        </p>
+      </div>
+    </section>
+
+    <section id="nilai">
+      <h2 class="section-title reveal slide-l">Nilai Ulangan Semester</h2>
+      <div class="table-wrap reveal slide-r d1">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:70px;">No</th>
+              <th>Nama Materi</th>
+              <th style="width:120px;">Nilai</th>
+            </tr>
+          </thead>
+          <tbody id="tabel-nilai">
+            <!-- Baris tabel diisi otomatis lewat JavaScript -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">Rata-rata Nilai</td>
+              <td><span class="avg" id="rata-rata">—</span></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section id="project">
+      <h2 class="section-title reveal slide-l">Project Semester Ini</h2>
+      <div class="project-grid">
+
+        <article class="project-card reveal zoom d1">
+          <div class="picon">🌿</div>
+          <h3>PERKASA</h3>
+          <p>Website komunitas pecinta alam Kolese Kanisius yang menampilkan berbagai kegiatan, dibangun dengan React JS.</p>
+          <div class="card-tech">React · HTML · CSS · JS</div>
+          <a href="project1.html" class="btn btn-primary">Lihat Project →</a>
+        </article>
+
+        <article class="project-card reveal zoom d2">
+          <div class="picon">🛍️</div>
+          <h3>SnapOutfit</h3>
+          <p>Toko pakaian daring dengan keranjang belanja, sistem pembayaran, dan autentikasi, dibangun memakai React JS.</p>
+          <div class="card-tech">React · Supabase · CSS · JS</div>
+          <a href="project2.html" class="btn btn-primary">Lihat Project →</a>
+        </article>
+
+        <article class="project-card reveal zoom d3">
+          <div class="picon">✦</div>
+          <h3>NEBULA Playground</h3>
+          <p>Playground partikel interaktif yang bereaksi pada kursor, dibuat dengan Canvas API dan JavaScript murni.</p>
+          <div class="card-tech">HTML5 Canvas · CSS · JS</div>
+          <a href="project3.html" class="btn btn-primary">Lihat Project →</a>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div class="popup-overlay" id="welcomePopup">
+    <div class="popup-card">
+      <div class="popup-emoji">👋</div>
+      <h3>Selamat <span class="grad">Datang!</span></h3>
+      <p>Terima kasih sudah membuka Website Report Siswa milik
+        <strong>Nathaniel Widiyanto</strong> — XIA3. Selamat menjelajahi!</p>
+      <button class="btn btn-primary" onclick="tutupPopup()">Mulai Jelajahi →</button>
+    </div>
+  </div>
+
+  <script>
+    // Animasi muncul: tambahkan kelas "in" saat elemen masuk ke layar
+    const _revealEls = document.querySelectorAll(".reveal");
+    const _obsReveal = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          _obsReveal.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    _revealEls.forEach(function (el) { _obsReveal.observe(el); });
+    // Pengaman: pastikan semua elemen terlihat setelah beberapa detik
+    setTimeout(function () { _revealEls.forEach(function (el) { el.classList.add("in"); }); }, 3500);
+
+    const dataNilai = [
+      { no: 1, materi: "Pengenalan HTML",         nilai: 90 },
+      { no: 2, materi: "Styling dengan CSS",       nilai: 88 },
+      { no: 3, materi: "Dasar JavaScript",         nilai: 92 },
+      { no: 4, materi: "Layout Responsive",        nilai: 95 },
+      { no: 5, materi: "Mini Project Website",     nilai: 97 },
+      { no: 6, materi: "Ulangan Praktik (Report)", nilai: 98 }
+    ];
+
+    const tbody = document.getElementById("tabel-nilai");
+    let total = 0;
+
+    dataNilai.forEach(function (item) {
+      total += item.nilai;
+      const tr = document.createElement("tr");
+      tr.innerHTML =
+        "<td>" + item.no + "</td>" +
+        "<td>" + item.materi + "</td>" +
+        "<td><span class='nilai-badge'>" + item.nilai + "</span></td>";
+      tbody.appendChild(tr);
+    });
+
+    // Hitung & tampilkan rata-rata nilai
+    const rata = (total / dataNilai.length).toFixed(1);
+    document.getElementById("rata-rata").textContent = rata;
+
+    console.log("%c👋 Halo! Selamat datang di Website Report Siswa.", "color:#ffc15e; font-size:14px; font-weight:bold;");
+    console.log("Dibuat oleh: Nathaniel Widiyanto (XIA3)");
+    console.log("Rata-rata nilai semester ini:", rata);
+
+    const popup = document.getElementById("welcomePopup");
+
+    window.addEventListener("load", function () {
+      // beri jeda sebentar lalu munculkan pop-up dengan animasi
+      setTimeout(function () { popup.classList.add("show"); }, 350);
+    });
+
+    function tutupPopup() {
+      popup.classList.remove("show");
+    }
+
+    // klik area gelap di luar kotak untuk menutup pop-up
+    popup.addEventListener("click", function (e) {
+      if (e.target === popup) tutupPopup();
+    });
+
+    // tekan tombol Escape untuk menutup pop-up
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") tutupPopup();
+    });
+  </script>
+
+</body>
+</html>
