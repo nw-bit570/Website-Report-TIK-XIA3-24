@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEBULA — Particle Playground | Nathaniel Widiyanto</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { overflow: hidden; }
+    #stage { position: fixed; inset: 0; z-index: 0; display: block; }
+
+    .pg-ui {
+      position: fixed;
+      z-index: 3;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(17, 17, 29, 0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px 18px;
+      box-shadow: var(--shadow);
+      max-width: calc(100% - 32px);
+    }
+    .pg-ui .group { display: flex; align-items: center; gap: 8px; }
+    .pg-ui label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .pg-ui input[type="range"] { width: 90px; accent-color: var(--coral); cursor: pointer; }
+    .pg-chip {
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 0.84rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .pg-chip:hover { border-color: var(--coral); }
+    .pg-chip.active { background: var(--grad-warm); color: var(--bg); border-color: transparent; }
+
+    .pg-top {
+      position: fixed;
+      z-index: 3;
+      top: 20px;
+      left: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .pg-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pg-title .grad {
+      background: var(--grad-cool);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .pg-hint {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    @media (max-width: 620px) {
+      .pg-hint { display: none; }
+      .pg-ui { gap: 9px; padding: 12px; bottom: 14px; }
+      .pg-ui input[type="range"] { width: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="stage"></canvas>
+
+  <div class="pg-top">
+    <div class="pg-title"><span class="grad">✦ NEBULA</span></div>
+    <a href="project3.html" class="btn btn-ghost">← Kembali</a>
+  </div>
+
+  <p class="pg-hint" style="position:fixed; z-index:3; top:54px; left:24px;">
+    Gerakkan kursor untuk menarik partikel · Klik untuk ledakan
+  </p>
+
+  <div class="pg-ui">
+    <div class="group">
+      <label>Jumlah</label>
+      <input type="range" id="count" min="40" max="220" value="120">
+    </div>
+    <div class="group">
+      <label>Kecepatan</label>
+      <input type="range" id="speed" min="1" max="10" value="4">
+    </div>
+    <button class="pg-chip active" id="modeLink">Garis</button>
+    <button class="pg-chip active" id="modeMouse">Kursor</button>
+    <button class="pg-chip" id="themeBtn">🎨 Warna</button>
+    <button class="pg-chip" id="resetBtn">↺ Reset</button>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("stage");
+    const ctx = canvas.getContext("2d");
+
+    const themes = [
+      ["#ff6b5e", "#ffc15e", "#8b7cff"],
+      ["#4fd1c5", "#8b7cff", "#5eead4"],
+      ["#ff8fab", "#ffc15e", "#ff6b5e"],
+      ["#a3e635", "#4fd1c5", "#ffc15e"]
+    ];
+    let themeIndex = 0;
+
+    let W, H;
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    let settings = { count: 120, speed: 4, link: true, mouseOn: true };
+    let particles = [];
+    const mouse = { x: -9999, y: -9999 };
+
+    function warna() {
+      const t = themes[themeIndex];
+      return t[Math.floor(Math.random() * t.length)];
+    }
+
+    function buatPartikel(x, y) {
+      const v = settings.speed / 4;
+      return {
+        x: x !== undefined ? x : Math.random() * W,
+        y: y !== undefined ? y : Math.random() * H,
+        vx: (Math.random() - 0.5) * v * 2,
+        vy: (Math.random() - 0.5) * v * 2,
+        r: Math.random() * 2.5 + 1.5,
+        c: warna()
+      };
+    }
+
+    function isiUlang() {
+      particles = [];
+      for (let i = 0; i < settings.count; i++) particles.push(buatPartikel());
+    }
+    isiUlang();
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        if (settings.mouseOn) {
+          const dx = mouse.x - p.x, dy = mouse.y - p.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 180 && dist > 0) {
+            const force = (180 - dist) / 180 * 0.6;
+            p.vx += (dx / dist) * force;
+            p.vy += (dy / dist) * force;
+          }
+        }
+
+        p.x += p.vx; p.y += p.vy;
+        p.vx *= 0.98; p.vy *= 0.98;
+
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+        p.x = Math.max(0, Math.min(W, p.x));
+        p.y = Math.max(0, Math.min(H, p.y));
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.c;
+        ctx.fill();
+
+        if (settings.link) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const q = particles[j];
+            const d = Math.hypot(p.x - q.x, p.y - q.y);
+            if (d < 120) {
+              ctx.beginPath();
+              ctx.strokeStyle = p.c;
+              ctx.globalAlpha = (1 - d / 120) * 0.5;
+              ctx.lineWidth = 1;
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(q.x, q.y);
+              ctx.stroke();
+              ctx.globalAlpha = 1;
+            }
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener("mousemove", function (e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener("mouseout", function () { mouse.x = -9999; mouse.y = -9999; });
+    window.addEventListener("touchmove", function (e) {
+      const t = e.touches[0];
+      mouse.x = t.clientX; mouse.y = t.clientY;
+    }, { passive: true });
+
+    function ledakan(x, y) {
+      for (let i = 0; i < 18; i++) {
+        const p = buatPartikel(x, y);
+        const a = Math.random() * Math.PI * 2;
+        const sp = Math.random() * 6 + 2;
+        p.vx = Math.cos(a) * sp; p.vy = Math.sin(a) * sp;
+        particles.push(p);
+      }
+      if (particles.length > 320) particles.splice(0, particles.length - 320);
+    }
+    canvas.addEventListener("click", function (e) { ledakan(e.clientX, e.clientY); });
+
+    document.getElementById("count").addEventListener("input", function (e) {
+      settings.count = +e.target.value; isiUlang();
+    });
+    document.getElementById("speed").addEventListener("input", function (e) {
+      settings.speed = +e.target.value;
+    });
+    document.getElementById("modeLink").addEventListener("click", function () {
+      settings.link = !settings.link; this.classList.toggle("active", settings.link);
+    });
+    document.getElementById("modeMouse").addEventListener("click", function () {
+      settings.mouseOn = !settings.mouseOn; this.classList.toggle("active", settings.mouseOn);
+    });
+    document.getElementById("themeBtn").addEventListener("click", function () {
+      themeIndex = (themeIndex + 1) % themes.length;
+      particles.forEach(function (p) { p.c = warna(); });
+    });
+    document.getElementById("resetBtn").addEventListener("click", isiUlang);
+
+    console.log("✦ NEBULA Particle Playground aktif — dibuat dengan Canvas API & Vanilla JS.");
+  </script>
+
+</body>
+</html>
